@@ -207,16 +207,19 @@ export default async function Home() {
                   icon={<Github className="h-5 w-5" />}
                   label="GitHub"
                   url="linkid.qzz.io/vishnu/github"
+                  href= "https://github.com/vishnukothakapu"
                 />
                 <DemoRow
                   icon={<Linkedin className="h-5 w-5" />}
                   label="LinkedIn"
                   url="linkid.qzz.io/vishnu/linkedin"
+                  href= "https://www.linkedin.com/in/kothakapuvishnukiran/"
                 />
                 <DemoRow
                   icon={<Code2 className="h-5 w-5" />}
                   label="LeetCode"
                   url="linkid.qzz.io/vishnu/leetcode"
+                  href="https://leetcode.com"
                 />
               </div>
             </div>
@@ -259,10 +262,10 @@ export default async function Home() {
                 One identity. Infinite professional links. Built for developers who value clean, predictable URLs.
               </p>
               <div className="flex items-center gap-3">
-                <FooterIcon href="https://github.com/your-repo" label="GitHub">
+                <FooterIcon href="https://github.com/vishnukothakapu/linkid" label="GitHub">
                   <Github className="h-5 w-5" />
                 </FooterIcon>
-                <FooterIcon href="https://twitter.com/your-handle" label="Twitter">
+                <FooterIcon href="https://twitter.com/vishnukothakapu" label="Twitter">
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
@@ -277,8 +280,8 @@ export default async function Home() {
               ["Get Started", "/login"],
             ]} />
             <FooterColumn title="Support" links={[
-              ["Report Issue", "https://github.com/your-repo/issues"],
-              ["Community", "https://github.com/your-repo/discussions"],
+              ["Report Issue", "https://github.com/vishnukothakapu/linkid/issues"],
+              ["Community", "https://github.com/vishnukothakapu/linkid/discussions"],
               ["Documentation", "/docs"],
               ["Contact Us", "mailto:support@linkid.qzz.io"],
             ]} />
@@ -428,13 +431,18 @@ function DemoRow({
   icon,
   label,
   url,
+  href, 
 }: {
   icon: React.ReactNode;
   label: string;
   url: string;
+  href?: string;
 }) {
+
+  const destination = href ? href : `https://${url}`;
+
   return (
-    <Link href={`https://${url}`} target="_blank" className="group block">
+    <Link href={destination} target="_blank" className="group block">
       <div className="flex items-center justify-between gap-4 rounded-2xl border border-violet-100 bg-white/80 px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-200 hover:bg-white hover:shadow-lg dark:border-white/10 dark:bg-white/[0.04] dark:hover:bg-white/[0.07] sm:px-5">
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-700 transition-colors duration-300 group-hover:bg-violet-600 group-hover:text-white dark:bg-violet-400/10 dark:text-violet-200">
