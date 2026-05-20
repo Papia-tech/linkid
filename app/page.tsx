@@ -449,6 +449,7 @@ function FooterIcon({ href, label, children }: { href: string; label: string; ch
     <Link
       href={href}
       target="_blank"
+      rel = "noopener noreferrer"
       aria-label={label}
       className="flex h-10 w-10 items-center justify-center rounded-xl border border-violet-200/70 bg-white/60 text-zinc-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-300 hover:text-violet-700 hover:shadow-md dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-400 dark:hover:text-violet-200"
     >
@@ -462,15 +463,21 @@ function FooterColumn({ title, links }: { title: string; links: Array<[string, s
     <div className="space-y-4">
       <h3 className="text-sm font-semibold text-zinc-950 dark:text-white">{title}</h3>
       <div className="space-y-3">
-        {links.map(([label, href]) => (
-          <Link
-            key={href}
-            href={href}
-            className="block text-sm text-zinc-600 transition-colors duration-300 hover:text-violet-700 dark:text-zinc-400 dark:hover:text-violet-200"
-          >
-            {label}
-          </Link>
-        ))}
+        {links.map(([label, href]) => {
+          const isExternal = href.startsWith('http');
+          
+          return (
+            <Link
+              key={href}
+              href={href}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              className="block text-sm text-zinc-600 transition-colors duration-300 hover:text-violet-700 dark:text-zinc-400 dark:hover:text-violet-200"
+            >
+              {label}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
